@@ -6,7 +6,7 @@ apply plugin: 'com.jfrog.bintray'
 version = "3.1.5"
 
 android {
-    compileSdkVersion 'android-Q'
+    compileSdkVersion 28
 
     resourcePrefix "sensors_analytics_"
 

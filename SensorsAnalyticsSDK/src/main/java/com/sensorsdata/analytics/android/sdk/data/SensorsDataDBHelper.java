@@ -25,10 +25,14 @@ import com.sensorsdata.analytics.android.sdk.SALog;
 
 class SensorsDataDBHelper extends SQLiteOpenHelper {
     private static final String TAG = "SA.SQLiteOpenHelper";
+
+    //创建事件表
     private static final String CREATE_EVENTS_TABLE =
             "CREATE TABLE " + DbParams.TABLE_EVENTS + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     DbParams.KEY_DATA + " STRING NOT NULL, " +
                     DbParams.KEY_CREATED_AT + " INTEGER NOT NULL);";
+
+    //事件时间索引
     private static final String EVENTS_TIME_INDEX =
             "CREATE INDEX IF NOT EXISTS time_idx ON " + DbParams.TABLE_EVENTS +
                     " (" + DbParams.KEY_CREATED_AT + ");";

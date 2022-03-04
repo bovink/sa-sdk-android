@@ -1370,7 +1370,7 @@ public class SensorsDataAutoTrackHelper {
 
             AopUtil.addViewPathProperties(activity, view, properties);
 
-            //ViewId
+            //ViewId获取
             String idString = AopUtil.getViewId(view);
             if (!TextUtils.isEmpty(idString)) {
                 properties.put(AopConstants.ELEMENT_ID, idString);

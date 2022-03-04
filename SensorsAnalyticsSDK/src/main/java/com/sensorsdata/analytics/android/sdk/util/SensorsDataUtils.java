@@ -199,12 +199,12 @@ public final class SensorsDataUtils {
                     if (telephonyManager != null) {
                         String operator = telephonyManager.getSimOperator();
                         String alternativeName = null;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                            CharSequence tmpCarrierName = telephonyManager.getSimCarrierIdName();
-                            if (!TextUtils.isEmpty(tmpCarrierName)) {
-                                alternativeName = tmpCarrierName.toString();
-                            }
-                        }
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//                            CharSequence tmpCarrierName = telephonyManager.getSimCarrierIdName();
+//                            if (!TextUtils.isEmpty(tmpCarrierName)) {
+//                                alternativeName = tmpCarrierName.toString();
+//                            }
+//                        }
                         if (TextUtils.isEmpty(alternativeName)) {
                             if (telephonyManager.getSimState() == TelephonyManager.SIM_STATE_READY) {
                                 alternativeName = telephonyManager.getSimOperatorName();
@@ -660,17 +660,18 @@ public final class SensorsDataUtils {
 
             TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
             if (tm != null) {
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                    if (tm.hasCarrierPrivileges()) {
-                        imei = tm.getImei();
-                    } else {
-                        SALog.d(TAG, "Can not get IMEI info.");
-                    }
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    imei = tm.getImei();
-                } else {
-                    imei = tm.getDeviceId();
-                }
+//                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+//                    if (tm.hasCarrierPrivileges()) {
+//                        imei = tm.getImei();
+//                    } else {
+//                        SALog.d(TAG, "Can not get IMEI info.");
+//                    }
+//                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                    imei = tm.getImei();
+//                } else {
+//                    imei = tm.getDeviceId();
+//                }
+                imei = tm.getDeviceId();
             }
         } catch (Exception e) {
             SALog.printStackTrace(e);

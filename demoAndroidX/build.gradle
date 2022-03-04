@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.sensorsdata.analytics.android'
 
 android {
-    compileSdkVersion 'android-Q'
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.sensorsdata.analytics.android.demo"
