@@ -27,6 +27,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @SuppressLint("CommitPrefEdits")
+//各种持久化Preferences的抽象类
 public abstract class PersistentIdentity<T> {
 
     interface PersistentSerializer<T> {
@@ -49,6 +50,7 @@ public abstract class PersistentIdentity<T> {
             String data = null;
             synchronized (loadStoredPreferences) {
                 try {
+                    //初始化
                     SharedPreferences sharedPreferences = loadStoredPreferences.get();
                     if (sharedPreferences != null) {
                         data = sharedPreferences.getString(persistentKey, null);

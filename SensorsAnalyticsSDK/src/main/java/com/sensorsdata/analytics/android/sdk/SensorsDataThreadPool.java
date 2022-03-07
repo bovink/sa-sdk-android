@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class SensorsDataThreadPool {
-    private static SensorsDataThreadPool singleton;
+    private static SensorsDataThreadPool singleton;//单例
     private static ExecutorService executorService;
     private static final int POOL_SIZE = 3;
 
@@ -33,6 +33,10 @@ public class SensorsDataThreadPool {
         return singleton;
     }
 
+    /**
+     * 执行任务
+     * @param runnable
+     */
     public void execute(Runnable runnable) {
         try {
             initThreadPool();
@@ -44,12 +48,18 @@ public class SensorsDataThreadPool {
         }
     }
 
+    /**
+     * 关闭线程池
+     */
     public void shutdown() {
         if (executorService != null && !executorService.isShutdown()) {
             executorService.shutdown();
         }
     }
 
+    /**
+     * 初始化线程池
+     */
     private void initThreadPool() {
         if (executorService.isShutdown() || executorService.isTerminated()) {
             executorService = Executors.newFixedThreadPool(POOL_SIZE);

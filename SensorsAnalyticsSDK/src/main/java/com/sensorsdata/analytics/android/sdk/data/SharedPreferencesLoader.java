@@ -33,13 +33,19 @@ class SharedPreferencesLoader {
     }
 
     Future<SharedPreferences> loadPreferences(Context context, String name) {
+
+        //创建Callable任务
         final LoadSharedPreferences loadSharedPrefs =
                 new LoadSharedPreferences(context, name);
+
+        //创建FutureTask
         final FutureTask<SharedPreferences> task = new FutureTask<>(loadSharedPrefs);
+        //线程池执行任务
         sensorsDataThreadPool.execute(task);
         return task;
     }
 
+    //Callable返回SharedPreferences对象
     private static class LoadSharedPreferences implements Callable<SharedPreferences> {
         LoadSharedPreferences(Context context, String prefsName) {
             mContext = context;

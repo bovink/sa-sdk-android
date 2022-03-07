@@ -49,6 +49,7 @@ public class PersistentLoader {
         this.context = context;
         final SharedPreferencesLoader sPrefsLoader = new SharedPreferencesLoader();
         final String prefsName = "com.sensorsdata.analytics.android.sdk.SensorsDataAPI";
+        //Future
         storedPreferences = sPrefsLoader.loadPreferences(context, prefsName);
     }
 
@@ -59,6 +60,7 @@ public class PersistentLoader {
         return instance;
     }
 
+    //
     public static PersistentIdentity loadPersistent(String persistentKey) {
         if (instance == null) {
             throw new RuntimeException("you should call 'PersistentLoader.initLoader(Context)' first");
@@ -68,6 +70,7 @@ public class PersistentLoader {
         }
         switch (persistentKey) {
             case PersistentName.APP_END_DATA:
+                //使用Future对象作为参数构造
                 return new PersistentAppEndData(storedPreferences);
             case PersistentName.APP_END_STATE:
                 return new PersistentAppEndEventState(storedPreferences);
