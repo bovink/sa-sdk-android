@@ -229,6 +229,7 @@ public class SensorsDataAutoTrackHelper {
                 return;
             }
 
+            //判断是否设置需要采集的Fragment列表，以及当且采集的Fragment是否在列表中
             Set<Integer> fragmentsSets = SensorsDataAPI.sharedInstance().getAutoTrackFragments();
             boolean isAutoTrackFragment = SensorsDataAPI.sharedInstance().isFragmentAutoTrackAppViewScreen(fragment.getClass());
             if (!isAutoTrackFragment) {
@@ -269,6 +270,7 @@ public class SensorsDataAutoTrackHelper {
         }
     }
 
+    //插桩
     public static void trackFragmentResume(Object object) {
         if (!SensorsDataAPI.sharedInstance().isTrackFragmentAppViewScreenEnabled()) {
             return;
