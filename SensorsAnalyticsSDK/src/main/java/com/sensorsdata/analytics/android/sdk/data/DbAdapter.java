@@ -38,7 +38,7 @@ public class DbAdapter {
     private final File mDatabaseFile;
     private final DbParams mDbParams;
     /* Session 时长间隔 */
-    private int mSessionTime = 30 * 1000, mSavedSessionTime = 0;
+    private int mSessionTime = 30 * 1000, mSavedSessionTime = 0;//保存的数据库备份
     /* AppPaused 的时间戳 */
     private long mAppPausedTime = 0;
     /* AppEnd 事件是否发送，true 发送、false 未发送 */
@@ -456,10 +456,13 @@ public class DbAdapter {
      * @return $AppEnd 触发 Session 时长
      */
     public int getSessionIntervalTime() {
+        //如果不同
         if (mSessionTime != mSavedSessionTime) {
             Cursor cursor = null;
             try {
+                //尝试获取存储的数据
                 cursor = contentResolver.query(mDbParams.getSessionTimeUri(), null, null, null, null);
+                //如果存储过数据
                 if (cursor != null && cursor.getCount() > 0) {
                     while (cursor.moveToNext()) {
                         mSessionTime = cursor.getInt(0);

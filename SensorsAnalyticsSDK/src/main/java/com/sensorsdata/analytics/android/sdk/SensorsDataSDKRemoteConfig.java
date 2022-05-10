@@ -66,6 +66,11 @@ public class SensorsDataSDKRemoteConfig {
         this.disableDebugMode = disableDebugMode;
     }
 
+    /**
+     * 控制SDK是否提供埋点实现
+     * 是全埋点事件追踪开关的上级开关
+     * @return
+     */
     boolean isDisableSDK() {
         return disableSDK;
     }

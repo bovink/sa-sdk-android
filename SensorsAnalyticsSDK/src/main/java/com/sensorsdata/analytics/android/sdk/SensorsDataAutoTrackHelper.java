@@ -236,6 +236,7 @@ public class SensorsDataAutoTrackHelper {
                 return;
             }
 
+            // 如果忽略追踪事件不为空，如果追踪Fragment列表为空
             if (fragment.getClass().getAnnotation(SensorsDataIgnoreTrackAppViewScreen.class) != null
                     && fragmentsSets == null) {
                 return;
